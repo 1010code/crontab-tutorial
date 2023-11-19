@@ -12,7 +12,7 @@ sudo docker build -t corn-test .
 ### Run the docker image
 
 ```sh
-sudo docker run --rm -d --name mycontainer -e DEL_WAV=1 -e DAY=7 -p 8001:8001 corn-test
+sudo docker run --rm -d --name mycontainer -e DEL_WAV=1 -e DAY=2 -p 8001:8001 corn-test
 ```
 
 運行後可以透過以下指令進入指定運行中的 container 資料夾。並觀察檔案是否有成功寫入與建立。
@@ -24,6 +24,40 @@ sudo docker exec -it mycontainer  bash
 - http://localhost:8001/remove.log
 - http://localhost:8001/cron.log
 
+
+### Check the container running
+
+```sh
+sudo docker container ls
+```
+
+```
+CONTAINER ID   IMAGE       COMMAND                  CREATED             STATUS             PORTS                    NAMES
+d13a035fed0d   corn-test   "/bin/sh -c 'echo $D…"   About an hour ago   Up About an hour   0.0.0.0:8001->8001/tcp   mycontainer
+```
+
+### Stop the container running 
+
+```
+sudo docker container stop d13a035fed0d
+```
+
+> d13a035fed0d為container ID，需更換。
+
+### Delete the image
+取得 image ID，要刪除ID為1da633537c7b。
+```sh
+sudo docker image ls
+```
+
+```
+REPOSITORY   TAG       IMAGE ID       CREATED             SIZE
+corn-test    latest    1da633537c7b   About an hour ago   495MB
+```
+
+```sh
+sudo docker image rm 1da633537c7b
+```
 
 ## Reference
 - [使用 Dockerfile 設定 Container 時區](https://cynthiachuang.github.io/Change-Timezone-in-Dockerfile/)

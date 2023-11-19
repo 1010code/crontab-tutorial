@@ -35,5 +35,5 @@ RUN chmod +x /code/auto-rm.sh
 RUN crontab /etc/cron.d/auto-rm
 
 
-CMD echo $DAY > "/code/day" & echo $DEL_WAV > "/code/DEL_WAV" & gunicorn -w 1 -b 0.0.0.0:8001 run:app -k uvicorn.workers.UvicornWorker -t 0 --error-logfile ./static/error.log --capture-output --log-level debug
+CMD echo $DAY > "/code/day" & echo $DEL_WAV > "/code/DEL_WAV" & gunicorn -w 1 -b 0.0.0.0:8001 run:app -k uvicorn.workers.UvicornWorker -t 0 --error-logfile ./static/error.log --capture-output --log-level debug & cron -f
 
