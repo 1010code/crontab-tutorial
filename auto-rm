@@ -1,0 +1,3 @@
+# 分 時 日 月 星期 執行帳號 指令...
+*/1 * * * * sh /code/auto-rm.sh  >> /code/static/cron.log 2>&1
+

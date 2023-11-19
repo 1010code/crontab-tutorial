@@ -1,0 +1,3 @@
+uvicorn
+gunicorn
+fastapi==0.95.2
